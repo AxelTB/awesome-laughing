@@ -15,6 +15,7 @@ local beautiful = require("beautiful")
 local naughty   = require("naughty")
 local drop      = require("scratchdrop")
 local lain      = require("lain")
+local tyrannical = require("tyrannical")
 -- }}}
 
 -- {{{ Error handling
@@ -86,14 +87,7 @@ local layouts = {
 -- }}}
 
 -- {{{ Tags
-tags = {
-   names = { "1", "2", "3", "4", "5"},
-   layout = { layouts[1], layouts[2], layouts[3], layouts[1], layouts[4] }
-}
-
-for s = 1, screen.count() do
-   tags[s] = awful.tag(tags.names, s, tags.layout)
-end
+dofile(os.getenv("HOME") .. "/.config/awesome/tyrannicalRule.lua")
 -- }}}
 
 -- {{{ Wallpaper
@@ -629,18 +623,6 @@ awful.rules.rules = {
 
     { rule = { class = "MPlayer" },
           properties = { floating = true } },
-
-    { rule = { class = "Dwb" },
-          properties = { tag = tags[1][1] } },
-
-    { rule = { class = "Iron" },
-          properties = { tag = tags[1][1] } },
-
-    { rule = { instance = "plugin-container" },
-          properties = { tag = tags[1][1] } },
-
-	  { rule = { class = "Gimp" },
-     	    properties = { tag = tags[1][4] } },
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized_horizontal = true,
