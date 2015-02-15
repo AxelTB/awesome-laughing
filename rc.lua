@@ -64,7 +64,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/powerarrow-darker/theme.lu
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "urxvtc" or "xterm"
+terminal   = "x-terminal-emulator"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -115,8 +115,8 @@ mytextclock = awful.widget.textclock(" %a %d %b  %H:%M")
 lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
 
 -- Mail IMAP check
-mailicon = wibox.widget.imagebox(beautiful.widget_mail)
-mailicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(mail) end)))
+--mailicon = wibox.widget.imagebox(beautiful.widget_mail)
+--mailicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(mail) end)))
 --[[ commented because it needs to be set before use
 mailwidget = lain.widgets.imap({
     timeout  = 180,
@@ -344,7 +344,6 @@ for s = 1, screen.count() do
     end
     
     right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(spr)
     right_layout:add(arrl)
     right_layout_add(mpdicon, mpdwidget)
@@ -359,7 +358,7 @@ for s = 1, screen.count() do
     right_layout_add(mytextclock, spr)
     --right_layout_add(mylayoutbox[s])
 
-    -- Now bring it all together (with the tasklist in the middle)
+    -- Now bring it all together
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
     --layout:set_middle(mytasklist[s])
@@ -368,9 +367,11 @@ for s = 1, screen.count() do
     
     --Bottom tasklist
     local bottomlayout = wibox.layout.align.horizontal()
+    local bottomrightlayout = wibox.layout.fixed.horizontal()
+    if s == 1 then bottomrightlayout:add(wibox.widget.systray()) end
+    bottomrightlayout:add(mylayoutbox[s])
+    bottomlayout:set_right(bottomrightlayout)
     bottomlayout:set_middle(mytasklist[s])
-    bottomlayout:set_right(mylayoutbox[s])
-
     mybottomwibox[s]:set_widget(bottomlayout)
 end
 -- }}}
