@@ -10,7 +10,6 @@ layout      = awful.layout.suit.tile                         ,
 focus_new   = true                                           ,
 selected    = true,
 index       = 1,
-max_clients = five_layout,
 class       = {
 "xterm" , "urxvt" , "aterm","URxvt","XTerm","Gnome-terminal"
 },

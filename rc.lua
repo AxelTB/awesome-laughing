@@ -76,13 +76,6 @@ mail       = "google-chrome https://inbox.google.com"
 iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf-ng -i all "
 musicplr   = terminal .. " -g 130x34-320+16 -e ncmpcpp "
 
-local layouts = {
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-}
 -- }}}
 
 -- {{{ Tags
@@ -112,27 +105,6 @@ mytextclock = awful.widget.textclock(" %a %d %b  %H:%M")
 
 -- calendar
 lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
-
--- Mail IMAP check
---mailicon = wibox.widget.imagebox(beautiful.widget_mail)
---mailicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(mail) end)))
---[[ commented because it needs to be set before use
-mailwidget = lain.widgets.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        if mailcount > 0 then
-            widget:set_text(" " .. mailcount .. " ")
-            mailicon:set_image(beautiful.widget_mail_on)
-        else
-            widget:set_text("")
-            mailicon:set_image(beautiful.widget_mail)
-        end
-    end
-})
-]]
 
 -- MPD
 mpdicon = wibox.widget.imagebox(beautiful.widget_music)
