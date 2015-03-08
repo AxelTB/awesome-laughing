@@ -30,7 +30,7 @@ class = {
 } ,
 {
 name = "Files",
-init        = true                                           ,
+init        = false                                           ,
 exclusive   = true                                           ,
 --icon        = utils.tools.invertedIconPath("folder.png")     ,
 --screen      = config.scr.pri                          ,
@@ -55,7 +55,7 @@ class ={
 } ,
 {
 name = "Edit",
-init        = true                                           ,
+init        = false                                           ,
 exclusive   = false                                           ,
 --                     screen      = {config.scr.pri, config.scr.sec}     ,
 --icon        = utils.tools.invertedIconPath("editor.png")     ,
@@ -65,7 +65,7 @@ class = {
 } ,
 {
 name = "Media",
-init        = true                                           ,
+init        = false                                           ,
 exclusive   = true                                           ,
 --icon        = utils.tools.invertedIconPath("media.png")      ,
 layout      = awful.layout.suit.max                          ,
@@ -75,7 +75,7 @@ class = {
 } ,
 {
 name = "Doc",
---  init        = true                                           ,
+init        = false                                           ,
 exclusive   = true                                           ,
 --icon        = utils.tools.invertedIconPath("info.png")       ,
 --                     screen      = config.scr.music                          ,
